@@ -1,0 +1,9 @@
+<h1>
+    フェス登録画面
+</h1>
+<% @fes.each do |fes| %>
+フェス名：<%= fes.fes_name %><br />
+開催場所:<%= fes.fes_place %><br />
+開催日：<%= fes.fes_data %><br />
+出演アーティスト:<%= fes.artist %><br />
+<% end %>
