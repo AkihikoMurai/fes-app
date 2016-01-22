@@ -1,15 +1,27 @@
 Rails.application.routes.draw do
 
+  get 'setlists/new'
+
   root to: 'static_pages#home'
   get    'signup' , to: 'users#new'
   get    'login'  , to: 'sessions#new'
   post   'login'  , to: 'sessions#create'
   delete 'logout' , to: 'sessions#destroy'
+  #get 'setlists/:festival_id', to: 'setlists#new', as: :new_setlist
   
   resources :users
-  resources :festivals
-  resources :sessions , only:[:new, :create, :destroy]
   
+  resources :festivals do
+    member do
+      get 'touroku'
+      get 'touroku2'
+      get 'touroku3'
+      get 'touroku4'
+      get 'touroku5'
+    end
+  end  
+  resources :setlists
+  resources :sessions , only:[:new, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,17 @@
+<h1>
+    フェス一覧
+</h1>
+<% if current_user %>
+    <%= link_to "フェス登録", new_festival_path( current_user) %>
+<br>
+    <% if @fes.present? %>
+        <% @fes.each do |f| %>
+            <%= link_to f.fes_name, festival_path(f) %><br>
+            <!--　フェス名：<%= f.fes_name %>　-->
+            <!--<%#= render "fes_detail" %><br />　-->
+            <!-- 開催場所:<%= f.fes_place %><br /> -->
+            <!-- 開催日：<%= f.fes_date %><br /> -->
+            <!-- 出演アーティスト:<%= f.artist %><br /> -->
+        <% end %>
+    <% end %>    
+<% end %>

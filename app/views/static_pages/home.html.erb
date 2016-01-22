@@ -1,18 +1,30 @@
 <div class="container-fluid">
 	<div class="row">
         <div class="col-md-6">
-            <h1>フェス一覧</h1>
-            <p> <!--ここに入力したフェスを表示 --></p>    
-            
-            <% @fes.each do |festival| %>
-            フェス名:<%= festival.fes_name %> 
-            <% end %>
+            <h1>フェス一覧
+                <% if logged_in? %>
+		            <%= link_to "(フェスの新規登録)", new_festival_path(current_user) %>
+                <% end %>	                
+		    </h1>
+            <% if @fes.present? %>
+                <% @fes.each do |f| %>
+                    <ol>
+                        <ul><%= link_to f.fes_name, festival_path(f) %></ul>
+                        
+                    </ol>
+                <% end %>    
+            <% else %>
+                <p>登録されているフェスはありません。</p>
+            <% end %>    
         </div>
-        <% if logged_in? %>
-		<div class="col-md-6">
-		    <%= link_to "フェスの登録", new_festival_path(current_user) %>
-		    <%= link_to "フェスの編集", edit_festival_path(current_user) %>
+        
+        <div class="col-md-6">
+            <h2>Fes-appのコンセプト</h2>
+                <li>フェス行く前に予習が必要ですよね？</li>
+                <li>でもYoutubeで曲を探すの、TSUTAYAでCDレンタルするの面倒じゃないですか？</li>
+                <li>このアプリならその面倒な作業を省いてよりフェスを楽しめます。</li>
+                <p>⇒それこそ、このFes-app</p>
+            
 		</div>
-		<% end %>
     </div>
 </div>

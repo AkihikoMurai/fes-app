@@ -7,5 +7,5 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
     has_secure_password
     
-    has_many:festivals
+    has_many:festivals, dependent: :destroy
 end

@@ -1,0 +1,45 @@
+<h1>セットリストの登録</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(Setlist.new) do |f| %>
+      <%= render 'shared/error_messages' , object: f.object %>
+      
+      <div>
+      出演アーティスト:<%= f.label @fes.artist5 %>
+      <%= f.hidden_field :artist  %>
+      </div>
+      
+      <%= f.label :music1 ,"セットリスト"%>
+      <%= f.text_field :music1 %>
+      
+      <%= f.label :music2 ,"セットリスト"%>
+      <%= f.text_field :music2 %>
+      
+      <%= f.label :music3 ,"セットリスト"%>
+      <%= f.text_field :music3 %>
+      
+      <%= f.label :music4 ,"セットリスト"%>
+      <%= f.text_field :music4 %>
+      
+      <%= f.label :music5 ,"セットリスト"%>
+      <%= f.text_field :music5 %>
+      
+      <%= f.label :music6 ,"セットリスト"%>
+      <%= f.text_field :music6 %>
+      
+      <%= f.label :music7 ,"セットリスト"%>
+      <%= f.text_field :music7 %>
+      
+      <%= f.label :music8 ,"セットリスト"%>
+      <%= f.text_field :music8 %>
+      
+      <%= f.label :music9 ,"セットリスト"%>
+      <%= f.text_field :music9 %>
+      
+      <%= f.label :music10 ,"セットリスト"%>
+      <%= f.text_field :music10 %>
+      
+      <%= f.submit "Create festival", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

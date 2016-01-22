@@ -1,9 +1,51 @@
-<h1>
-    フェス登録画面
-</h1>
-<% @fes.each do |fes| %>
-フェス名：<%= fes.fes_name %><br />
-開催場所:<%= fes.fes_place %><br />
-開催日：<%= fes.fes_data %><br />
-出演アーティスト:<%= fes.artist %><br />
-<% end %>
+<h1><%= @fes.fes_name %></h1>
+フェス開催場所：<%= @fes.fes_place %><br>
+出演アーティスト：
+        <li><%= @fes.artist %>
+        <%= link_to "セットリストの登録" , touroku_festival_path(@fes)  %>
+        
+        <%= link_to "再生" , '#' %>
+        </li>
+        
+        <% if @fes.artist2.nil? %>
+                <p></p>
+        <% else %>        
+        <li><%= @fes.artist2 %>
+        <%= link_to "セットリストの登録" , touroku2_festival_path(@fes) %>
+        
+        <%= link_to "再生" , '#' %>
+        </li>
+        <% end %>
+        
+        <% if @fes.artist3.nil? %>
+                <p></p>
+        <% else %>
+        <li><%= @fes.artist3 %>
+        <%= link_to "セットリストの登録" , touroku3_festival_path(@fes) %>
+        
+        <%= link_to "再生" , '#' %>
+        </li>
+        <% end %>
+        
+        <% if @fes.artist4.nil? %>
+                <p></p>
+        <% else %>
+        <li><%= @fes.artist4 %>
+        <%= link_to "セットリストの登録" , touroku4_festival_path(@fes) %>
+        
+        <%= link_to "再生" , '#' %>
+        </li>
+        <% end %>
+        
+        <% if @fes.artist5.nil? %>
+                <p></p>
+        <% else %>
+        <li><%= @fes.artist5 %>
+        <%= link_to "セットリストの登録" , touroku5_festival_path(@fes) %>
+        
+        <%= link_to "再生" , '#' %>
+        </li>
+        <% end %>
+
+
+フェス開催日:<%= @fes.fes_date %>

@@ -7,6 +7,7 @@ class CreateFestivals < ActiveRecord::Migration
       t.string :artist
 
       t.timestamps null: false
+      
     end
   end
 end

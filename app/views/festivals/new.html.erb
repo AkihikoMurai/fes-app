@@ -4,17 +4,17 @@
     <%= form_for(@fes) do |f| %>
       <%= render 'shared/error_messages' , object: f.object %>
 
-      <%= f.label :fes_name  %>
+      <%= f.label :fes_name, "フェス名称"  %>
       <%= f.text_field :fes_name %>
 
-      <%= f.label :fes_place %>
+      <%= f.label :fes_place, "フェス開催場所" %>
       <%= f.text_field :fes_place %>
 
-      <%= f.label :fes_data %>
-      <%= f.text_field :fes_data %>
-
-      <%= f.label :artist %>
-      <%= f.text_field :artist %>
+     <!-- <#%= f.label :fes_date, class: "control-label" %> -->
+     <!-- <#%= f.date_select :fes_date, class: "form-control" %> -->
+    <%= form_for(@) do |f| %>
+      <%= render 'shared/error_messages' , object: f.object %>  
+      
 
       <%= f.submit "Create festival", class: "btn btn-large btn-primary" %>
     <% end %>
