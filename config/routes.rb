@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'artists/new'
+
   get 'setlists/new'
 
   root to: 'static_pages#home'
@@ -13,14 +15,21 @@ Rails.application.routes.draw do
   
   resources :festivals do
     member do
-      get 'touroku'
-      get 'touroku2'
-      get 'touroku3'
-      get 'touroku4'
-      get 'touroku5'
+      get 'artistnew'
+  #    get 'touroku'
+  #    get 'touroku2'
+  #    get 'touroku3'
+  #    get 'touroku4'
+  #    get 'touroku5'
     end
   end  
   resources :setlists
+  resources :artists do
+    member do
+      get 'musicadd'
+    end
+  end
+  
   resources :sessions , only:[:new, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.

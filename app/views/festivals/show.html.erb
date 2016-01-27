@@ -1,51 +1,17 @@
 <h1><%= @fes.fes_name %></h1>
 フェス開催場所：<%= @fes.fes_place %><br>
-出演アーティスト：
-        <li><%= @fes.artist %>
-        <%= link_to "セットリストの登録" , touroku_festival_path(@fes)  %>
-        
-        <%= link_to "再生" , '#' %>
-        </li>
-        
-        <% if @fes.artist2.nil? %>
-                <p></p>
-        <% else %>        
-        <li><%= @fes.artist2 %>
-        <%= link_to "セットリストの登録" , touroku2_festival_path(@fes) %>
-        
-        <%= link_to "再生" , '#' %>
-        </li>
-        <% end %>
-        
-        <% if @fes.artist3.nil? %>
-                <p></p>
-        <% else %>
-        <li><%= @fes.artist3 %>
-        <%= link_to "セットリストの登録" , touroku3_festival_path(@fes) %>
-        
-        <%= link_to "再生" , '#' %>
-        </li>
-        <% end %>
-        
-        <% if @fes.artist4.nil? %>
-                <p></p>
-        <% else %>
-        <li><%= @fes.artist4 %>
-        <%= link_to "セットリストの登録" , touroku4_festival_path(@fes) %>
-        
-        <%= link_to "再生" , '#' %>
-        </li>
-        <% end %>
-        
-        <% if @fes.artist5.nil? %>
-                <p></p>
-        <% else %>
-        <li><%= @fes.artist5 %>
-        <%= link_to "セットリストの登録" , touroku5_festival_path(@fes) %>
-        
-        <%= link_to "再生" , '#' %>
-        </li>
-        <% end %>
+フェス開催日:<%= @fes.fes_date %><br>
 
-
-フェス開催日:<%= @fes.fes_date %>
+<% if @artists.nil? %>
+        アーティストが未登録です。
+        <%= link_to "登録して下さい", artistnew_festival_path(@fes) %>
+<% else %>
+        <% @artists.each do |f| %>
+        出演アーティスト：<%= f.musician %>
+        (<%= link_to '編集', edit_artist_path(f) %> |
+        <%= link_to '削除', f, method: :delete, data: { confirm: '削除してもよろしいですか？' } %>|
+        <%= link_to 'セットリスト登録', musicadd_artist_path(f) %>|
+        <%= link_to 'セットリスト表示', setlist_path(f) %>)<br>
+        <% end %>
+        <%= link_to "出演アーティストを追加する", artistnew_festival_path(@fes) %>
+<% end %>

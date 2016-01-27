@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114103824) do
+ActiveRecord::Schema.define(version: 20160126144524) do
+
+  create_table "artists", force: :cascade do |t|
+    t.integer  "festival_id"
+    t.string   "musician"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "artists", ["festival_id"], name: "index_artists_on_festival_id"
 
   create_table "festivals", force: :cascade do |t|
     t.string   "fes_name"
@@ -31,7 +40,6 @@ ActiveRecord::Schema.define(version: 20160114103824) do
   add_index "festivals", ["user_id"], name: "index_festivals_on_user_id"
 
   create_table "setlists", force: :cascade do |t|
-    t.integer  "festival_id"
     t.string   "artist"
     t.string   "music1"
     t.string   "music2"
@@ -43,11 +51,13 @@ ActiveRecord::Schema.define(version: 20160114103824) do
     t.string   "music8"
     t.string   "music9"
     t.string   "music10"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "artist_id"
+    t.text     "youtubeurl"
   end
 
-  add_index "setlists", ["festival_id"], name: "index_setlists_on_festival_id"
+  add_index "setlists", ["artist_id"], name: "index_setlists_on_artist_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

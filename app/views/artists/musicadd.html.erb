@@ -1,0 +1,15 @@
+<!--<%#= @fes.name %>-->
+<%= @artist.musician %>のセットリスト登録
+
+<%= form_for(Setlist.new) do |f| %>
+    <%= f.label :music1, "セットリスト" %>
+    <%= f.text_field :music1 %>
+    
+    <%= f.label :youtubeurl, "YoutubeのURL" %>
+    <%= f.text_field :youtubeurl %>
+
+    <%= f.hidden_field :artist_id, :value => @artist.id %>
+    
+    <%= f.submit "セットリストを登録する", class: "btn btn-large btn-primary"%>
+     
+<% end %> 

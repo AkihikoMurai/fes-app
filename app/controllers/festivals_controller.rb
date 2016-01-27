@@ -22,36 +22,41 @@ class FestivalsController < ApplicationController
           render 'new'
         end
     end
+    
+    def artistnew
+      @fes = Festival.find(params[:id])
+      render 'artists/new'
+    end
 
     def show
         @fes = Festival.find(params[:id])
+        @artists = @fes.artists
+        #if Artist != nil ?
+        #    @artist = Artist.find(params[:id])
+        #end
     end
 
-    def touroku
-        @fes = Festival.find(params[:id]) 
-    end    
+    def update
+        if @message.update(message_params)
+          #保存に成功した場合はトップページへリダイレクト
+          redirect_to root_path , notice:'メッセージを編集しました'
+        else
+          #保存に失敗した場合は編集画面へ戻す
+          render 'edit'
+        end
+    end  
+  
+    def destroy
+        @fes = Festival.find(params[:id])
+        @artists = @fes.artists
+        @artists.destroy
+        redirect_to festival_path, notice:'メッセージを削除しました。'
+    end   
     
-    #def touroku2
-    #    @fes = Festival.find(params[:id]) 
-    #end 
-    
-    #def touroku3
-    #    @fes = Festival.find(params[:id]) 
-    #end 
-    
-    #def touroku4
-    #    @fes = Festival.find(params[:id]) 
-    #end 
-    
-    #def touroku5
-    #    @fes = Festival.find(params[:id]) 
-    #end 
-
     private
   
     def fes_params
-        params.require(:festival).permit(:fes_name, :fes_data, :fes_place, 
-                                :artist, :artist2, :artist3, :artist4, :artist5)
+        params.require(:festival).permit(:fes_name, :fes_data, :fes_place)
     end
     
     #def setlist_params

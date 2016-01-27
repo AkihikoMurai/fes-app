@@ -1,12 +1,18 @@
-フェス名：<%= @fes.fes_name %>
-出演アーティスト：<%= @fes.artist %>のセットリスト
-<%= @setlist.music1 %><%= link_to "曲を登録する",'#'%>
-<%= @setlist.music2 %><%= link_to "曲を登録する",'#'%>
-<%= @setlist.music3 %><%= link_to "曲を登録する",'#'%>
-<%= @setlist.music4 %><%= link_to "曲を登録する",'#'%>
-<%= @setlist.music5 %><%= link_to "曲を登録する",'#'%>
-<%= @setlist.music6 %><%= link_to "曲を登録する",'#'%>
-<%= @setlist.music7 %><%= link_to "曲を登録する",'#'%>
-<%= @setlist.music8 %><%= link_to "曲を登録する",'#'%>
-<%= @setlist.music9 %><%= link_to "曲を登録する",'#'%>
-<%= @setlist.music10 %><%= link_to "曲を登録する",'#'%>
+<h1><%= @artist.musician %>のセットリスト</h1>
+
+<% if @setlists.nil? %>
+        セットリストが未登録です。
+        <%= link_to "登録して下さい", musicadd_artist_path(@artist) %>
+        <% else %>
+            <% @setlists.each do |f| %>
+            <ol>
+                <li>
+                    セットリスト：<%= f.music1 %><br>
+                    URL：<%= link_to f.youtubeurl, f.youtubeurl,:target=>["_blank"] %><br>
+                    (<%= link_to '編集', edit_artist_path(f) %> |
+                    <%= link_to '削除', f, method: :delete, data: { confirm: '削除してもよろしいですか？' } %>)<br>
+                </li>
+            </ol>
+        <% end %>
+        <%= link_to "セットリストを追加する", musicadd_artist_path(@artist) %>
+<% end %>  

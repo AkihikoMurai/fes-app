@@ -1,0 +1,8 @@
+
+<%= form_for(Artist.new) do |a| %>
+    <%= a.label :musician, "出演アーティスト"  %>
+    <%= a.text_field :musician %>
+    <%= a.hidden_field :festival_id, :value => @fes.id %>
+    
+    <%= a.submit "アーティストを登録する", class: "btn btn-large btn-primary"%>
+<% end %>    

@@ -1,29 +1,25 @@
 class SetlistsController < ApplicationController
   
-  #def new
-  #  @setlist = Setlist.new
-  #end
-  
   def create
-    @fes = Festival.find(params[:festivalid])
-    @setlist = @fes.setlists.build(setlist_params)
+    setlist = Setlist.new(setlist_params)
+    @artist = Artist.find(setlist.artist_id)
+    @setlist = @artist.setlists.build(setlist_params)
     if @setlist.save
       flash[:success] = "セットリストを登録しました"
       redirect_to @setlist
     else
-      render 'new'
+      render 'artists/musicadd'
     end
   end
   
   def show
-    @fes = Festival.find(params[:id])
-    @setlist = Setlist.find(params[:id])
+    @artist = Artist.find(params[:id])
+    @setlists = @artist.setlists
   end
   
   private
   
   def setlist_params
-    params.require(:setlist).permit(:festivalid, :artist, :music1, :music2, :music3, :music4,
-                                    :music5, :music6, :music7, :music8, :music9, :music10)
+    params.require(:setlist).permit(:artist_id, :music1, :youtubeurl)
   end
 end

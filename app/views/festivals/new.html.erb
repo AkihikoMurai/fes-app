@@ -12,10 +12,7 @@
 
      <!-- <#%= f.label :fes_date, class: "control-label" %> -->
      <!-- <#%= f.date_select :fes_date, class: "form-control" %> -->
-    <%= form_for(@) do |f| %>
-      <%= render 'shared/error_messages' , object: f.object %>  
-      
-
+ 
       <%= f.submit "Create festival", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
