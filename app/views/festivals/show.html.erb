@@ -11,7 +11,7 @@
         (<%= link_to '編集', edit_artist_path(f) %> |
         <%= link_to '削除', f, method: :delete, data: { confirm: '削除してもよろしいですか？' } %>|
         <%= link_to 'セットリスト登録', musicadd_artist_path(f) %>|
-        <%= link_to 'セットリスト表示', setlist_path(f) %>)<br>
+        <%= link_to 'セットリスト表示', artist_path(f) %>)<br>
         <% end %>
         <%= link_to "出演アーティストを追加する", artistnew_festival_path(@fes) %>
 <% end %>

@@ -9,7 +9,10 @@
             <% if @fes.present? %>
                 <% @fes.each do |f| %>
                     <ol>
-                        <ul><%= link_to f.fes_name, festival_path(f) %></ul>
+                        <ul><%= link_to f.fes_name, festival_path(f) %>
+                        (<%= link_to "編集", edit_festival_path(f) %>|
+                        <%= link_to "削除" ,f , method: :delete, data: { confirm: '削除してもよろしいですか？' }%>)
+                        </ul>
                     </ol>
                 <% end %>    
             <% else %>

@@ -1,0 +1,19 @@
+<h1><%= @fes.fes_name %>の編集</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@fes) do |f| %>
+      <%= render 'shared/error_messages' , object: f.object %>
+
+      <%= f.label :fes_name, "フェス名称"  %>
+      <%= f.text_field :fes_name %>
+
+      <%= f.label :fes_place, "フェス開催場所" %>
+      <%= f.text_field :fes_place %>
+
+     <!-- <#%= f.label :fes_date, class: "control-label" %> -->
+     <!-- <#%= f.date_select :fes_date, class: "form-control" %> -->
+ 
+      <%= f.submit "Create festival", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

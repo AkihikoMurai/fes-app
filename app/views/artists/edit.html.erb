@@ -1,9 +1,9 @@
-<%= form_for(@atrist) do |a| %>
+<%= form_for(@artist) do |a| %>
     登録されたアーティスト：<%= @artist.musician %>から
-    <%= a.label :musician, "出演アーティスト"  %>
-    <%= a.text_field :musician %>
-    <%= a.hidden_field :festival_id, :value => @fes.id %>
-    へ変更します。
     
-    <%= a.submit "出演アーティストを編集する", class: "btn btn-large btn-primary"%>
+    <%= a.text_field :musician %>
+    
+    <%= a.hidden_field :festival_id, :value => @fes.id %>
+    
+    <%= a.submit "へ変更します。", class: "btn btn-large btn-primary"%>
 <% end %> 

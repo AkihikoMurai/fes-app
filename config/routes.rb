@@ -16,11 +16,9 @@ Rails.application.routes.draw do
   resources :festivals do
     member do
       get 'artistnew'
-  #    get 'touroku'
-  #    get 'touroku2'
-  #    get 'touroku3'
-  #    get 'touroku4'
-  #    get 'touroku5'
+      #get 'editartist'
+      #patch 'updateartist'
+      #delete 'deleteartist'
     end
   end  
   resources :setlists

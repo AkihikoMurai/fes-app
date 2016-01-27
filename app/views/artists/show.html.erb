@@ -1,0 +1,19 @@
+<h1><%= @artist.musician %>のセットリスト</h1>
+
+<% if @setlists.nil? %>
+        セットリストが未登録です。
+        <%= link_to "登録して下さい", musicadd_artist_path(@artist) %>
+        <% else %>
+            <% @setlists.each do |f| %>
+            <ol>
+                <li>
+                    セットリスト：<%= f.music1 %><br>
+                    URL：<%= link_to f.youtubeurl, f.youtubeurl,:target=>["_blank"] %><br>
+                    (<%= link_to '編集', edit_setlist_path(f) %> |
+                    <%= link_to '削除', f, method: :delete, data: { confirm: '削除してもよろしいですか？' } %>)<br>
+                </li>
+            </ol>
+        <% end %>
+        <%= link_to "セットリストを追加する", musicadd_artist_path(@artist) %>
+        <%#= link_to "戻る", festival_path(@artist) %>
+<% end %>  

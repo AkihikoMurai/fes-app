@@ -1,0 +1,16 @@
+<h1><%= @artist.musician %>のセットリストを</h1>
+
+<%= form_for(@setlist) do |f| %>
+    <%= f.label :music1, "セットリスト" %>
+    <%= f.text_field :music1 %>
+    
+    <%= f.label :youtubeurl, "YoutubeのURL" %>
+    <%= f.text_field :youtubeurl %>
+
+    <%= f.hidden_field :artist_id, :value => @artist.id %>
+    
+    <%= f.submit "へ変更する", class: "btn btn-large btn-primary"%>
+     
+<% end %> 
+
+<%= link_to "Youtubeで探す", 'https://www.youtube.com/', :target=>["_blank"] %>

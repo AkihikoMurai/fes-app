@@ -1,5 +1,6 @@
 <!--<%#= @fes.name %>-->
-<%= @artist.musician %>のセットリスト登録
+<h1><%= @artist.musician %>のセットリスト登録</h1>
+<%= link_to "Youtubeで探す", 'https://www.youtube.com/', :target=>["_blank"] %>
 
 <%= form_for(Setlist.new) do |f| %>
     <%= f.label :music1, "セットリスト" %>

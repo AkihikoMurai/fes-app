@@ -7,8 +7,8 @@ class ArtistsController < ApplicationController
   #end
   
   def show
-    #@fes = Festival.find(params[:id])
     @artist = Artist.find(params[:id])
+    @setlists = @artist.setlists
   end
   
   def create
@@ -28,14 +28,16 @@ class ArtistsController < ApplicationController
   end
 
   def edit
-    @fes = Festival.find(params[:id])
-    @artists = @fes.artists
+    @artist = Artist.find(params[:id])
+    @fes = Festival.find(@artist.festival_id)
   end
   
   def update
-    if @message.update(message_params)
+    @artist = Artist.find(params[:id])
+    @fes = Festival.find(@artist.festival_id)
+    if @artist.update(artist_params)
       #保存に成功した場合はトップページへリダイレクト
-      redirect_to root_path , notice:'メッセージを編集しました'
+      redirect_to festival_path(@fes) , notice:'出演者を編集しました'
     else
       #保存に失敗した場合は編集画面へ戻す
       render 'edit'
@@ -43,10 +45,10 @@ class ArtistsController < ApplicationController
   end  
 
   def destroy
-    @fes = Festival.find(params[:id])
-    @artists = @fes.artists
-    @artists.destroy
-    redirect_to root_path, notice:'メッセージを削除しました。'
+    @artist = Artist.find(params[:id])
+    @fes = Festival.find(@artist.festival_id)
+    @artist.destroy
+    redirect_to festival_path(@fes), notice:'出演者を削除しました。'
   end  
     
   private
